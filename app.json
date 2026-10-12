@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "Juniper Chef",
+    "slug": "juniper-chef",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "57.0.0",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.junipertable.chef"
+    },
+    "android": {
+      "package": "com.junipertable.chef"
+    }
+  }
+}
