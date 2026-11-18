@@ -2,7 +2,7 @@ import type { ScreenProps } from '../types';
 
 const categories = ['Starters', 'Mains', 'Desserts', 'Drinks'];
 
-export default function HomeScreen({ items, profile, onAddDish, onEditDish, onToggleAvailability, onNavigate }: ScreenProps) {
+export default function HomeScreen({ items, profile, onAddDish, onEditDish, onDeleteDish, onToggleAvailability, onNavigate }: ScreenProps) {
   const availableCount = items.filter((item) => item.available).length;
   const recentItems = items.slice(0, 4);
 
@@ -36,6 +36,7 @@ export default function HomeScreen({ items, profile, onAddDish, onEditDish, onTo
               <span className={`availability-chip ${item.available ? 'on' : 'off'}`}>{item.available ? 'Available' : 'Paused'}</span>
               <button className="dish-row-action" onClick={() => onToggleAvailability(item.id)}>{item.available ? 'Pause' : 'Enable'}</button>
               <button className="dish-row-action" onClick={() => onEditDish(item)}>Edit</button>
+              <button className="dish-row-action delete-action" onClick={() => onDeleteDish(item.id)}>Delete</button>
             </div>
           ))}</div> : <div className="empty-state"><strong>Your menu starts here</strong>Add your first dish to get service ready.</div>}
         </section>

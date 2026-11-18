@@ -3,7 +3,7 @@ import type { ScreenProps } from '../types';
 
 const categories = ['All items', 'Starters', 'Mains', 'Desserts', 'Drinks'];
 
-export default function MenuScreen({ items, onAddDish, onEditDish, onToggleAvailability, onToggleFavorite }: ScreenProps) {
+export default function MenuScreen({ items, onAddDish, onEditDish, onDeleteDish, onToggleAvailability, onToggleFavorite }: ScreenProps) {
   const [category, setCategory] = useState('All items');
   const [search, setSearch] = useState('');
   const filteredItems = items.filter((item) => {
@@ -15,7 +15,7 @@ export default function MenuScreen({ items, onAddDish, onEditDish, onToggleAvail
   return (
     <>
       <header className="page-heading">
-        <div><span className="eyebrow">THE JUNIPER TABLE</span><h1>Menu</h1><p>{items.length} dishes across your kitchen</p></div>
+        <div><span className="eyebrow">CHRISTOFFEL KITCHEN</span><h1>Menu</h1><p>{items.length} dishes across your kitchen</p></div>
         <button className="button button-primary" onClick={onAddDish}><span className="button-symbol">+</span>Add dish</button>
       </header>
       <div className="toolbar">
@@ -38,10 +38,17 @@ export default function MenuScreen({ items, onAddDish, onEditDish, onToggleAvail
             <div className="menu-card-footer">
               <button className="dish-row-action" onClick={() => onToggleAvailability(item.id)}>{item.available ? 'Pause item' : 'Make available'}</button>
               <button className="dish-row-action" onClick={() => onEditDish(item)}>Edit ↗</button>
+              <button className="dish-row-action delete-action" onClick={() => onDeleteDish(item.id)}>Delete</button>
             </div>
           </div>
         </article>
-      ))}</div> : <div className="empty-state"><strong>No dishes found</strong>Try a different search or category.</div>}
+      ))}</div> : <div className="empty-state">
+        <strong>{items.length ? 'No dishes found' : 'Your menu is empty'}</strong>
+        <span>{items.length ? 'Try another search or category.' : 'Add a dish to start building your menu.'}</span>
+        {items.length
+          ? <button className="button button-quiet empty-state-action" onClick={() => { setSearch(''); setCategory('All items'); }}>Clear filters</button>
+          : <button className="button button-primary empty-state-action" onClick={onAddDish}>+ Add dish</button>}
+      </div>}
     </>
   );
 }

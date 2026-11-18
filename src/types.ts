@@ -21,6 +21,7 @@ export type ScreenProps = {
   profile: ChefProfile;
   onAddDish: () => void;
   onEditDish: (item: MenuItem) => void;
+  onDeleteDish: (id: string) => void;
   onToggleAvailability: (id: string) => void;
   onToggleFavorite: (id: string) => void;
   onUpdateProfile: (profile: ChefProfile) => void;

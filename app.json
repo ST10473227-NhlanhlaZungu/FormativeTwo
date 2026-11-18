@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "Juniper Chef",
-    "slug": "juniper-chef",
+    "name": "Christoffel Kitchen",
+    "slug": "christoffel-kitchen",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "sdkVersion": "57.0.0",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.junipertable.chef"
+      "bundleIdentifier": "com.christoffelkitchen.chef"
     },
     "android": {
-      "package": "com.junipertable.chef"
+      "package": "com.christoffelkitchen.chef"
     }
   }
 }

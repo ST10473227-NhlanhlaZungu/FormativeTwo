@@ -1,6 +1,6 @@
 import type { ScreenProps } from '../types';
 
-export default function FavoritesScreen({ items, onToggleFavorite, onEditDish, onNavigate }: ScreenProps) {
+export default function FavoritesScreen({ items, onToggleFavorite, onEditDish, onDeleteDish, onNavigate }: ScreenProps) {
   const favorites = items.filter((item) => item.favorite);
 
   return (
@@ -18,6 +18,7 @@ export default function FavoritesScreen({ items, onToggleFavorite, onEditDish, o
           <div className="favorite-actions">
             <button className="favorite-remove" onClick={() => onToggleFavorite(item.id)} aria-label={`Remove ${item.name} from favorites`}>★</button>
             <button className="dish-row-action" onClick={() => onEditDish(item)}>Edit</button>
+            <button className="dish-row-action delete-action" onClick={() => onDeleteDish(item.id)}>Delete</button>
           </div>
         </div>
       ))}</div> : <div className="empty-state"><strong>No favorites yet</strong>Save a dish from your menu and it will be easy to find here.</div>}
